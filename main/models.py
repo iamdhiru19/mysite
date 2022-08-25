@@ -8,7 +8,7 @@ class Tutorial(models.Model):
     tutorial_published = models.DateTimeField("date published", default=datetime.now())
 
 
-    def __str__(self):
-        return self.tutorial_title
+    # def __str__(self):
+        # return self.tutorial_title
 
     

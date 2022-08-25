@@ -17,3 +17,4 @@ class TutorialAdmin(admin.ModelAdmin):
     } 
     
 admin.site.register(Tutorial, TutorialAdmin)
+ 

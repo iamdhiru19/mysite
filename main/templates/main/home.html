@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>MySite Tutorials</h1>
+<br><hr><br>
+
+{% for tutorial in tutorials %}
+<h2>{{tutorial.tutorial_title}}</h2>
+{{tutorial.tutorial_content|safe}}
+<p>{{tutorial.tutorial_published}}</p>
+<br><hr><br>
+{% endfor %}
+
+</body>
+</html>
