@@ -1,11 +1,14 @@
- 
 
+from email import message
+from webbrowser import get
 from django.shortcuts import render , redirect 
 from django.http import HttpResponse
 from .models import Tutorial
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-# Create your views here.
+from django.contrib import messages
+
+ # Create your views here.
 def homepage(request):
     # return HttpResponse("Wow this is an <strong>awesome</strong> tutorial")
     return  render(
@@ -24,11 +27,14 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f"New Account Created: {username}")
             login(request, user)
+            messages.info(request, f"you are now logged in as: {username}")
             return redirect("main:homepage")
         else:
             for msg in form.error_messages:
-                print(form.error_messages[msg])
+                messages.error(request, f"{msg} {form.error_messages[msg]}")
 
 
     form = UserCreationForm
